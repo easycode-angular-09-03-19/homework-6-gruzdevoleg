@@ -36,11 +36,10 @@ export class UserInfoComponent implements OnInit {
   }
 
   onFormSubmit() {
-    this.userService.editUser(this.user).subscribe((data: User) => {
-        this.flashMessagesService.show('
-          Данные пользователя успешно отредактированы', { cssClass: 'alert-success', timeout: 1000 });
+    this.userService.editUser(this.user.id).subscribe((data: number) => {
+        this.flashMessagesService.show('Данные пользователя успешно отредактированы', { cssClass: 'alert-success', timeout: 1000 });
         this.form.resetForm();
-        setTimeout(() => this.router.navigate([`/`]), 2000);
+        this.router.navigate([`/`]);
       })
   }
 

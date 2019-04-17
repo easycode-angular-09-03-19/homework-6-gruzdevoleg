@@ -13,18 +13,18 @@ export class UsersService {
     private http: HttpClient,
   ) { }
 
-  getUsers() {
-    return this.http.get(`${this.apiUrl}/users`);
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
 
-  getuserById(id: string) {
-    return this.http.get(`${this.apiUrl}/users/${id}`);
+  getuserById(id: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/users/${id}`);
   }
 
-  editUser(user: User) {
+  editUser(userId: number): Observable<number> {
       return new Observable( (observer) => {
-        this.http.put(`${this.apiUrl}/users/${user.id}`, user);
-        observer.next(user);
+        this.http.put(`${this.apiUrl}/users/${userId}`, userId);
+        observer.next(userId);
       });
   }
 }
