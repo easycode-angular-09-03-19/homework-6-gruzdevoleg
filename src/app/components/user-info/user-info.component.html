@@ -1,0 +1,14 @@
+
+<button class="back btn btn-success" (click)="onBackClicHandler()">Back</button>
+<button class="edit btn btn-primary" (click)="onEditClickHandler()">Edit</button>
+<form name="user-data-form" (ngSubmit)="onFormSubmit()" #editUserForm="ngForm">
+  <input type="email" [ngModel]="user?.email" (ngModelChange)="user.email = $event" name="email" [readOnly]="isReadonly">
+  <input type="number" [ngModel]="user?.id" (ngModelChange)="user.id = $event" name="id" [readOnly]="isReadonly">
+  <input type="text" [ngModel]="user?.name" (ngModelChange)="user.name = $event" name="name" [readOnly]="isReadonly" maxlength="100">
+  <input type="tel" [ngModel]="user?.phone" (ngModelChange)="user.phone = $event" name="phone" [readOnly]="isReadonly">
+  <input type="text" [ngModel]="user?.username" (ngModelChange)="user.username = $event" name="username" [readOnly]="isReadonly" maxlength="100">
+  <input type="text" [ngModel]="user?.website" (ngModelChange)="user.website = $event" name="website" [readOnly]="isReadonly">
+  <ng-container *ngIf="!isReadonly">
+  <button id="submit" class="btn btn-primary">Submit</button>
+  </ng-container>
+</form>
